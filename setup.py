@@ -27,8 +27,8 @@ def read_requirements():
 setup(
     name='TADA2025',
     version='1.0.0',
-    author='TADA2025 Workshop',
-    author_email='workshop@tada2025.com',
+    author='Artur Ziolkowski',
+    author_email='artur.k.ziolkowski@gmail.com',
     description='UI Driver library for TADA2025 workshop - Page Object Pattern for UI via CRUD operations',
     long_description=long_description,
     long_description_content_type='text/markdown',

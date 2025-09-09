@@ -37,70 +37,29 @@ cd C:\workshop\TADA2025
 ```
 
 
-### 2. Create and Activate Virtual Environment
-```powershell
-# Create virtual environment
-python -m venv .venv
-
-# Activate virtual environment (PowerShell)
-.\.venv\Scripts\Activate.ps1
-
-# Alternative activation (Command Prompt)
-.\.venv\Scripts\activate.bat
-```
-
-### 3. Install TADA2025 Package
-
-**Option A: Install as Editable Package (Recommended for Development)**
-```powershell
-# Install TADA2025 in editable mode with all dependencies
-pip install -e .
-
-# Or install with development tools
-pip install -e ".[dev]"
-```
-
-**Option B: Install from Requirements File**
+### 2. Install from Requirements File**
 ```powershell
 # Install all required packages from requirements.txt
+cd C:\workshop\TADA2025
 pip install -r requirements.txt
 ```
 
-### 4. Verify Installation
+### 3. Verify Installation
 ```powershell
 # Test import of DemoQADriver
 python -c "from DemoQADriver import DemoQADriver; print('DemoQADriver imported successfully')"
 
 # Test TADA2025 package import
 python -c "from TADA2025 import DemoQADriver; print('TADA2025 package imported successfully')"
-
-# Run tests using console command
-tada2025-test
 ```
 
-## Package Installation
-
-### Install from Parent Directory
-If you're installing from outside the TADA2025 folder:
-```powershell
-# Navigate to the parent directory containing TADA2025
-cd C:\workshop
-
-# Install TADA2025 as editable package
-pip install -e .\TADA2025\
-
-# Or install with development dependencies
-pip install -e ".\TADA2025\[dev]"
-```
 
 ### Available Console Commands
 After installation, you can use these commands from anywhere:
 
 ```powershell
-# Run all tests
-tada2025-test
 
-# Alternative: Run tests directly with pytest
+# Run tests directly with pytest
 pytest C:\path\to\TADA2025\tests\ -v
 ```
 
@@ -111,9 +70,6 @@ C:\workshop\TADA2025\
 ├── DemoQADriver/             # Main driver package
 │   ├── __init__.py           # Package initialization and exports
 │   └── demoqa_driver.py      # Main DemoQADriver implementation
-├── TADA2025/                 # Top-level package
-│   ├── __init__.py           # Package exports
-│   └── scripts.py            # Console scripts
 ├── tests/                    # Test suite
 │   └── test_open_session.py  # Test suite for DemoQADriver
 ├── .venv/                    # Virtual environment (created after setup)
@@ -155,20 +111,4 @@ tests/test_open_session.py::test_navigate_to_page_default_url_mock PASSED [ 90%]
 tests/test_open_session.py::test_close_browser_mock PASSED      [100%]
 
 ============== 10 passed in 21.84s ==============
-```
-
-## Usage
-
-### Import Options
-After installation, you can import the library in multiple ways:
-
-```python
-# Option 1: Import from DemoQADriver package directly
-from DemoQADriver import DemoQADriver
-
-# Option 2: Import from TADA2025 package
-from TADA2025 import DemoQADriver
-
-# Option 3: Import specific components
-from DemoQADriver.demoqa_driver import DemoQADriver, SELENIUM
 ```
