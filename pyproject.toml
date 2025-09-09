@@ -1,0 +1,90 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "TADA2025"
+version = "1.0.0"
+authors = [
+    {name = "TADA2025 Workshop", email = "workshop@tada2025.com"},
+]
+description = "UI Driver library for TADA2025 workshop - Page Object Pattern for UI via CRUD operations"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Software Development :: Quality Assurance",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Framework :: Robot Framework",
+    "Framework :: Robot Framework :: Library",
+]
+keywords = ["ui", "automation", "testing", "selenium", "robot-framework", "page-object-pattern", "crud", "workshop"]
+
+dependencies = [
+    "pytest>=8.0.0",
+    "selenium>=4.0.0",
+    "robotframework-seleniumlibrary>=6.0.0",
+    "chromedriver-autoinstaller>=0.6.0",
+    "robotframework>=6.0.0",
+    "pytest-mock>=3.10.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest-html>=3.1.0",
+    "pytest-cov>=4.0.0",
+    "black>=22.0.0",
+    "flake8>=4.0.0",
+    "mypy>=0.950",
+]
+test = [
+    "pytest>=8.0.0",
+    "pytest-mock>=3.10.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ajadach/TADA2025"
+"Bug Reports" = "https://github.com/ajadach/TADA2025/issues"
+"Source" = "https://github.com/ajadach/TADA2025"
+
+# Console scripts will be defined in setup.py for now
+# [project.scripts]
+# tada2025-test = "TADA2025.scripts:run_tests"
+
+[tool.setuptools.packages.find]
+exclude = ["tests*", ".pytest_cache*", ".venv*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.md", "*.txt", "*.rst"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+extend-exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.venv
+    | build
+    | dist
+  )/
+)
+'''
