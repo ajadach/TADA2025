@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import chromedriver_autoinstaller
+# import chromedriver_autoinstaller
 
 from selenium import webdriver
 from SeleniumLibrary import SeleniumLibrary

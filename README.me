@@ -36,25 +36,14 @@ git clone https://github.com/ajadach/TADA2025
 cd C:\workshop\TADA2025
 ```
 
-### 2. Create and Activate Virtual Environment
-```powershell
-# Create virtual environment
-python -m venv .venv
 
-# Activate virtual environment (PowerShell)
-.\.venv\Scripts\Activate.ps1
-
-# Alternative activation (Command Prompt)
-.\.venv\Scripts\activate.bat
-```
-
-### 3. Install Required Packages
+### 2. Install Required Packages
 ```powershell
 # Install all required packages
-pip install pytest robotframework-seleniumlibrary chromedriver-autoinstaller
+pip install pytest robotframework-seleniumlibrary
 ```
 
-### 4. Verify Installation
+### 3. Verify Installation
 ```powershell
 # Test import of DemoQADriver
 python -c "from DemoQADriver import DemoQADriver; print('DemoQADriver imported successfully')"
@@ -73,75 +62,10 @@ C:\workshop\TADA2025\
 └── README.me                 # This file
 ```
 
-## Usage
-
-### Basic Usage Example
-
-```python
-from DemoQADriver import DemoQADriver
-
-# Create driver instance
-driver = DemoQADriver()
-
-# Open browser and navigate to DemoQA
-session_id = driver.open_browser()
-driver.navigate_to_page("https://demoqa.com/")
-
-# Perform your test operations here...
-
-# Clean up
-driver.close_browser()
-```
-
-### Available Methods
-
-- `open_browser(alias=None, headless=False)` - Opens a Chrome browser
-- `navigate_to_page(url='https://demoqa.com/')` - Navigates to specified URL
-- `close_browser()` - Closes the browser session
-
-## Running Tests
-
-### Prerequisites for Running Tests
-Ensure your virtual environment is activated:
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-### Test Execution Options
-
 #### 1. Run All Tests
 ```powershell
 # Run all tests in the test file with verbose output
 pytest tests\test_open_session.py -v
-```
-
-#### 2. Run Specific Test Categories
-
-**Integration Tests Only** (requires actual browser):
-```powershell
-# Run tests that open real browsers
-pytest tests\test_open_session.py -k "not mock" -v
-```
-
-**Unit Tests Only** (mocked, faster execution):
-```powershell
-# Run tests with mocked selenium (no browser required)
-pytest tests\test_open_session.py -k "mock" -v
-```
-
-#### 3. Run Individual Tests
-```powershell
-# Run a specific test function
-pytest tests\test_open_session.py::test_open_browser -v
-
-# Run specific test with detailed output
-pytest tests\test_open_session.py::test_navigate_to_page -v -s
-```
-
-#### 4. Run All Tests in Tests Directory
-```powershell
-# Run all test files in the tests folder
-pytest tests\ -v
 ```
 
 ### Test Output Explanation
@@ -169,46 +93,3 @@ tests/test_open_session.py::test_close_browser_mock PASSED      [100%]
 
 ============== 10 passed in 21.84s ==============
 ```
-
-## Troubleshooting
-
-### Common Issues and Solutions
-
-#### 1. Import Error: "No module named 'DemoQADriver'"
-**Solution**: Ensure you're in the correct directory and virtual environment is activated
-```powershell
-cd C:\workshop\TADA2025
-.\.venv\Scripts\Activate.ps1
-```
-
-#### 2. Chrome Driver Issues
-**Solution**: The `chromedriver-autoinstaller` package automatically handles Chrome driver installation
-
-#### 3. Virtual Environment Not Activating
-**Solution**: Use the full path or check PowerShell execution policy
-```powershell
-# Set execution policy if needed
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-# Use full path
-C:\workshop\TADA2025\.venv\Scripts\Activate.ps1
-```
-
-#### 4. Tests Hanging or Slow
-**Solution**: Run only unit tests for faster feedback
-```powershell
-pytest tests\test_open_session.py -k "mock" -v
-```
-
-## Development Notes
-
-- The driver uses **Robot Framework's SeleniumLibrary** internally
-- **Chrome** is the default browser (configurable)
-- Tests include both **integration** (real browser) and **unit** (mocked) test types
-- All browser sessions are properly cleaned up after tests
-
-## Workshop Context
-
-This driver demonstrates the **Page Object Pattern** for UI automation and is designed for CRUD operation testing on the DemoQA website (https://demoqa.com/).
-
-For questions or issues, refer to the TADA2025 workshop materials or documentation.
