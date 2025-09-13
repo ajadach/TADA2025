@@ -3,21 +3,20 @@
 
 from selenium import webdriver
 from SeleniumLibrary import SeleniumLibrary
-# from .instances import SELENIUM, screenshot_on_fail
 from robot.api.deco import keyword
 
 # Create SELENIUM instance here to avoid circular imports
 SELENIUM = SeleniumLibrary()
 
 
-class DemoQADriver():
+class DemoQA():
 
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
     ROBOT_LIBRARY_DOC_FORMAT = 'ROBOT'
 
     def __init__(self, install=True):
         # self.path_chromedriver = chromedriver_autoinstaller.install() if install else False
-        pass
+        selenium = SELENIUM
 
     @keyword("Open Browser")
     def open_browser(self, alias=None, headless=False):
