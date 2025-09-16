@@ -2,11 +2,9 @@
 # import chromedriver_autoinstaller
 
 from selenium import webdriver
-from SeleniumLibrary import SeleniumLibrary
+from DemoQADriver.DemoQALib.instances import SELENIUM
 from robot.api.deco import keyword
-
-# Create SELENIUM instance here to avoid circular imports
-SELENIUM = SeleniumLibrary()
+from DemoQADriver.DemoQALib.Elements import elements
 
 
 class DemoQA():
@@ -16,7 +14,8 @@ class DemoQA():
 
     def __init__(self, install=True):
         # self.path_chromedriver = chromedriver_autoinstaller.install() if install else False
-        selenium = SELENIUM
+        self.selenium = SELENIUM
+        self.elements = elements()
 
     @keyword("Open Browser")
     def open_browser(self, alias=None, headless=False):
@@ -38,9 +37,9 @@ class DemoQA():
             opt.add_argument("headless")
 
         index_or_alias = SELENIUM.create_webdriver("Chrome", alias=alias, options=opt)
-        # SELENIUM.set_window_size(1920, 1080)
-        #SELENIUM.set_selenium_speed(0.1)
-        # SELENIUM.maximize_browser_window()
+        SELENIUM.set_window_size(1920, 1080)
+        SELENIUM.set_selenium_speed(0.1)
+        SELENIUM.maximize_browser_window()
         return index_or_alias
 
     # @screenshot_on_fail
